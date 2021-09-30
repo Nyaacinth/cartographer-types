@@ -1,7 +1,7 @@
 {
   "types": "./index.d.ts",
   "name": "cartographer-types",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Type Type declarations of cartographer",
   "author": "Nyaacinth",
   "license": "MIT",
