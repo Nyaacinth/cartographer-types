@@ -1,18 +1,19 @@
-/// <reference path="./CartographerLayer.d.ts"/>
+import {TiledMapOrthogonal, TiledMapStaggered, TiledTile, TiledTileset} from "tiled-types"
+import {CartographerLayer} from "./CartographerLayer"
 
 /** Interface of Cartographer Map */
-interface ICartographerMap {
+export interface ICartographerMap {
     /**
      * Get the tileset that has the tile with the given global ID if it exists
      * @param gid The global ID of the tile
      */
-    getTileset(gid: number): import("tiled-types/types").TiledTileset | undefined
+    getTileset(gid: number): TiledTileset | undefined
 
     /**
      * Get a tile with the given global ID if it exists
      * @param gid The global ID of the tile
      */
-    getTile(gid: number): import("tiled-types/types").TiledTile | undefined
+    getTile(gid: number): TiledTile | undefined
 
     /**
      * Get the type of a tile if it exists
@@ -59,4 +60,4 @@ interface ICartographerMap {
  * Cartographer Map
  * @description Since isometic and hexagonal maps are not supported yet, the map types will only extends `TiledMapOrthogonal` or `TiledMapStaggered`
  */
-type CartographerMap = (ICartographerMap & import("tiled-types/types").TiledMapOrthogonal) | (ICartographerMap & import("tiled-types/types").TiledMapStaggered)
+export type CartographerMap = (ICartographerMap & TiledMapOrthogonal) | (ICartographerMap & TiledMapStaggered)

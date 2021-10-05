@@ -16,7 +16,7 @@ declare module "cartographer" {
          * @param path Path to the lua file
          * @noSelf
          */
-        function load(path: string): CartographerMap
+        function load(path: string): import("./CartographerMap").CartographerMap
     }
 
     export = cartographer

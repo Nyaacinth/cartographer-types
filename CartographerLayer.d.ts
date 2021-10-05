@@ -1,5 +1,7 @@
+import {TiledLayerGroup, TiledLayerImagelayer, TiledLayerObjectgroup, TiledLayerTilelayer} from "tiled-types"
+
 /** To declare the base class for all layers */
-interface ICartographerLayer {
+export interface ICartographerLayer {
     /**
      * Convert grid coordinates to pixel coordinates for this layer
      * @param grid_x The column to get the pixel coordinates
@@ -26,7 +28,7 @@ interface ICartographerLayer {
 }
 
 /** To declare the parent class for tile layers and object layers */
-interface ICartographerSpriteLayer extends ICartographerLayer {
+export interface ICartographerSpriteLayer extends ICartographerLayer {
     /**
      * Update animations on the layer
      * @param dt Delta Time
@@ -37,8 +39,11 @@ interface ICartographerSpriteLayer extends ICartographerLayer {
     draw(): void
 }
 
+/** A layer that contains tiled objects */
+export interface ICartographerObjectLayer extends ICartographerSpriteLayer, TiledLayerObjectgroup {}
+
 /** A layer that contains tiles placed on a grid */
-interface ICartographerTileLayer extends ICartographerSpriteLayer {
+export interface ICartographerTileLayer extends ICartographerSpriteLayer, TiledLayerTilelayer {
     /**
      * Get the bounds of the layer in tiles
      * @returns
@@ -111,13 +116,13 @@ interface ICartographerTileLayer extends ICartographerSpriteLayer {
 }
 
 /** A layer that displays a single image */
-interface ICartographerImageLayer extends ICartographerLayer {
+export interface ICartographerImageLayer extends ICartographerLayer, TiledLayerImagelayer {
     /** Draw the layer */
     draw(): void
 }
 
 /** A layer that contains other layers */
-interface ICartographerGroup extends ICartographerLayer {
+export interface ICartographerGroup extends ICartographerLayer, TiledLayerGroup {
     /**
      * Get a layer by name, it can get nested layers
      * @param vargs The name(s) of the layers to get
@@ -136,8 +141,4 @@ interface ICartographerGroup extends ICartographerLayer {
 }
 
 /** Cartographer Layer Types, check before use them! */
-type CartographerLayer =
-    (ICartographerSpriteLayer & import("tiled-types").TiledLayerObjectgroup) |
-    (ICartographerTileLayer & import("tiled-types").TiledLayerTilelayer) |
-    (ICartographerImageLayer & import("tiled-types").TiledLayerImagelayer) |
-    (ICartographerGroup & import("tiled-types").TiledLayerGroup)
+export type CartographerLayer = ICartographerObjectLayer | ICartographerTileLayer | ICartographerImageLayer | ICartographerGroup
