@@ -1,5 +1,3 @@
-/// <reference path="./CartographerMap.d.ts"/>
-
 /** @noResolution */
 declare module "cartographer" {
     /**
