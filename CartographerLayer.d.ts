@@ -39,11 +39,8 @@ export interface ICartographerSpriteLayer extends ICartographerLayer {
     draw(): void
 }
 
-/** A layer that contains tiled objects */
-export interface ICartographerObjectLayer extends ICartographerSpriteLayer, TiledLayerObjectgroup {}
-
 /** A layer that contains tiles placed on a grid */
-export interface ICartographerTileLayer extends ICartographerSpriteLayer, TiledLayerTilelayer {
+export interface ICartographerTileLayer extends ICartographerSpriteLayer {
     /**
      * Get the bounds of the layer in tiles
      * @returns
@@ -116,13 +113,13 @@ export interface ICartographerTileLayer extends ICartographerSpriteLayer, TiledL
 }
 
 /** A layer that displays a single image */
-export interface ICartographerImageLayer extends ICartographerLayer, TiledLayerImagelayer {
+export interface ICartographerImageLayer extends ICartographerLayer {
     /** Draw the layer */
     draw(): void
 }
 
 /** A layer that contains other layers */
-export interface ICartographerGroup extends ICartographerLayer, TiledLayerGroup {
+export interface ICartographerGroup extends ICartographerLayer {
     /**
      * Get a layer by name, it can get nested layers
      * @param vargs The name(s) of the layers to get
@@ -141,4 +138,8 @@ export interface ICartographerGroup extends ICartographerLayer, TiledLayerGroup 
 }
 
 /** Cartographer Layer Types, check before use them! */
-export type CartographerLayer = ICartographerObjectLayer | ICartographerTileLayer | ICartographerImageLayer | ICartographerGroup
+export type CartographerLayer =
+    (ICartographerSpriteLayer & TiledLayerObjectgroup) |
+    (ICartographerTileLayer & TiledLayerTilelayer) |
+    (ICartographerImageLayer & TiledLayerImagelayer) |
+    (ICartographerGroup & TiledLayerGroup)
