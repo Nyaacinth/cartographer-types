@@ -54,10 +54,13 @@ export interface ICartographerMap {
 
     /** Draw the map */
     draw(): void
+
+    /** Cartographer Map Layers */
+    layers: CartographerLayer[]
 }
 
 /**
  * Cartographer Map
  * @description Since isometic and hexagonal maps are not supported yet, the map types will only extends `TiledMapOrthogonal` or `TiledMapStaggered`
  */
-export type CartographerMap = (ICartographerMap & TiledMapOrthogonal) | (ICartographerMap & TiledMapStaggered)
+export type CartographerMap = (TiledMapOrthogonal & ICartographerMap) | (TiledMapStaggered & ICartographerMap)
