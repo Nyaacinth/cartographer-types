@@ -1,4 +1,4 @@
-import {TiledMapOrthogonal, TiledMapStaggered, TiledTile, TiledTileset} from "tiled-types"
+import {TiledMapOrthogonal, TiledMapStaggered, TiledTile, TiledTileset} from "tiled-lua-types"
 import {CartographerLayer} from "./CartographerLayer"
 
 /** Interface of Cartographer Map */

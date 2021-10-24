@@ -1,13 +1,13 @@
 {
   "types": "./index.d.ts",
   "name": "cartographer-types",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Type Type declarations of cartographer",
   "author": "Nyaacinth",
   "license": "MIT",
   "dependencies": {
-    "typescript-to-lua": "^1.0.1",
     "lua-types": "^2.11.0",
-    "tiled-types": "^1.3.0"
+    "tiled-lua-types": "Nyaacinth/tiled-lua-types",
+    "typescript-to-lua": "^1.0.1"
   }
 }

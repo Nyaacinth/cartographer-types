@@ -1,4 +1,4 @@
-import {TiledLayerGroup, TiledLayerImagelayer, TiledLayerObjectgroup, TiledLayerTilelayer} from "tiled-types"
+import {TiledLayerGroup, TiledLayerImagelayer, TiledLayerObjectgroup, TiledLayerTilelayer} from "tiled-lua-types"
 
 /** To declare the base class for all layers */
 export interface ICartographerLayer {
